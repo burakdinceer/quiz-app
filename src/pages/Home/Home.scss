@@ -1,0 +1,40 @@
+$fontColor : black;
+@mixin allForm{
+ height: 3rem;
+ width: 50%;
+ border: 1px solid black;
+ border-radius: 5px;
+ margin-bottom: 20px;
+}
+
+
+.form {
+  text-align: center;
+  h1{
+    color: $fontColor;
+}
+    .formMain {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+   
+
+      .formCategory{
+      
+        @include allForm;
+       
+      }
+      .formDifficulty {
+        
+        @include allForm;
+      }
+      .formType {
+        @include allForm;
+      }
+      button{
+        @include allForm;
+      }
+    }
+
+}

@@ -7,16 +7,23 @@ const initialState = {
    categories,
    difficulties,
    type,
-    
+   formValue:[],
+   questionsNumber:''
 }
 
 export const dataSlice = createSlice({
     name:'data',
     initialState,
     reducers:{
-      
+      formData:(state,action) => {
+        
+        state.formValue=[...state.formValue,action.payload]
+      },
+      formNumber:(state,action) => {
+        state.questionsNumber=action.payload
+      }
     }
 })
 
-
+export const {formData,formNumber} = dataSlice.actions
 export default dataSlice.reducer

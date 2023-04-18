@@ -1,5 +1,7 @@
-$fontColor : black;
-@mixin allForm{
+$fontColorBlack : black;
+$fontColorWhite: white;
+
+@mixin formElement{
  height: 3rem;
  width: 50%;
  border: 1px solid black;
@@ -11,7 +13,7 @@ $fontColor : black;
 .form {
   text-align: center;
   h1{
-    color: $fontColor;
+    color: $fontColorBlack;
 }
     .formMain {
     justify-content: center;
@@ -22,18 +24,23 @@ $fontColor : black;
 
       .formCategory{
       
-        @include allForm;
+        @include formElement;
        
       }
       .formDifficulty {
         
-        @include allForm;
+        @include formElement;
       }
       .formType {
-        @include allForm;
+        @include formElement;
       }
       button{
-        @include allForm;
+        @include formElement;
+        background: rgba(61, 101, 193, 0.886);
+        color: $fontColorWhite;
+      }
+      .formInput{
+        @include formElement;
       }
     }
 

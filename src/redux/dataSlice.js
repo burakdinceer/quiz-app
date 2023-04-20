@@ -21,9 +21,12 @@ export const dataSlice = createSlice({
       },
       formNumber:(state,action) => {
         state.questionsNumber=action.payload
+      },
+      filterData:(state,action) => {
+        state.questions = action.payload
       }
     }
 })
 
-export const {formData,formNumber} = dataSlice.actions
+export const {formData,formNumber,filterData} = dataSlice.actions
 export default dataSlice.reducer

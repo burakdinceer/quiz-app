@@ -4,24 +4,29 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { FormSelect } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {formData,formNumber} from '../../redux/dataSlice'
+import {formData,formNumber,filterData} from '../../redux/dataSlice'
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
- const {questions,type,difficulties,categories} = useSelector((state) => state.data)
+ const {questions,type,difficulties,categories,questionsNumber,formValue} = useSelector((state) => state.data)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleForm = (e) => {
    dispatch(formData({[e.target.name]:e.target.value}))
   }
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    debugger
     const getData = questions?.filter((item) => (
-      item.category === formData[0].category &&
-      item.difficulty === formData[1].difficulty &&
-      item.type === formData[2].type
+      item.category === formValue[0].categories &&
+      item.difficulty === formValue[1].difficulties &&
+      item.type === formValue[2].type
     ))
-    console.log(getData)
+    const newData = getData.slice(0,questionsNumber)
+    dispatch(filterData(newData))
+    navigate('/quiz')
   }
 
   const handleNumber = (e) => {

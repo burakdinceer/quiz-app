@@ -1,0 +1,35 @@
+.modal {
+  
+    margin-top: 1rem;
+    height: auto;
+    border: 1px solid black;
+    .modalScore{
+        font-size: 100px;
+    }
+    .modalHeader{
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+       }
+    .modalText{
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    .modalAnswer {
+        button{
+            width: 15%;
+            margin-top: 10px;
+            background: rgb(12, 142, 198);
+            color: white;
+            font-size: 10px;
+        }
+      
+       
+      
+    }
+    .home {
+     text-decoration: none;
+     color: rgb(12, 142, 198);
+     font-size: 2rem;
+    }
+}

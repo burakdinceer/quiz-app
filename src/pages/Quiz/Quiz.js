@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { formScore } from '../../redux/dataSlice'
+import { falseForm, formScore } from '../../redux/dataSlice'
 import Modal from '../../components/Modal/Modal'
 import './Quiz.scss'
 
@@ -10,8 +10,11 @@ const Quiz = () => {
     const [active,setActive] =  useState(false)
     const dispatch = useDispatch()
     const handlePage = (e) => {
-        
-       if(e === questions[number].correctAnswer){
+        if(e !== questions[number].correctAnswer){
+            dispatch(falseForm(questions[number]))
+        }
+
+       else if(e === questions[number].correctAnswer){
        
         dispatch(formScore(questionsScore.score+(questionsScore.maxScore / questionsNumber)))
        }
@@ -29,10 +32,13 @@ const Quiz = () => {
     }
   return (
     <div className='quiz'>
+          
        {
+        
         active ? <Modal/>
         :
          <>
+         <div className='quizNumber'> {number+1} <span>/</span> {questionsNumber}</div>
         <div className='quizTitle'>
             {questions[number]?.question       
             }

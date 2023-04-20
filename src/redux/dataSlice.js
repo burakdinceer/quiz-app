@@ -13,6 +13,7 @@ const initialState = {
     score:0,
     maxScore:100
    },
+   falseQuestion:[],
 }
 
 export const dataSlice = createSlice({
@@ -31,9 +32,12 @@ export const dataSlice = createSlice({
       },
       formScore:(state,action) => {
         state.questionsScore.score = action.payload
+      },
+      falseForm:(state,action) => {
+        state.falseQuestion = [...state.falseQuestion,action.payload]
       }
     }
 })
 
-export const {formData,formNumber,filterData,formScore} = dataSlice.actions
+export const {formData,formNumber,filterData,formScore,falseForm} = dataSlice.actions
 export default dataSlice.reducer

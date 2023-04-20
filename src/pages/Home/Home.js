@@ -18,7 +18,7 @@ const Home = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger
+   
     const getData = questions?.filter((item) => (
       item.category === formValue[0].categories &&
       item.difficulty === formValue[1].difficulties &&

@@ -1,16 +1,38 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { formScore } from '../../redux/dataSlice'
+import Modal from '../../components/Modal/Modal'
 import './Quiz.scss'
 
 const Quiz = () => {
-    const {questions} = useSelector((state) => state.data)
+    const {questions,questionsNumber,questionsScore} = useSelector((state) => state.data)
     const [number,setNumber] = useState(0)
-    const handlePage = () => {
-        setNumber(number+1)
+    const [active,setActive] =  useState(false)
+    const dispatch = useDispatch()
+    const handlePage = (e) => {
+        
+       if(e === questions[number].correctAnswer){
+       
+        dispatch(formScore(questionsScore.score+(questionsScore.maxScore / questionsNumber)))
+       }
+       const nextQuestion = number+1
+       if(nextQuestion<questions.length){
+        setNumber(nextQuestion)
+       }else{
+        alert('Sınav Bitti, Sonuçlar Yükleniyor...')
+        setActive(!active)
+       }
+       
+
+        
+
     }
   return (
     <div className='quiz'>
-        
+       {
+        active ? <Modal/>
+        :
+         <>
         <div className='quizTitle'>
             {questions[number]?.question       
             }
@@ -19,12 +41,15 @@ const Quiz = () => {
             
             { 
             questions[number].answers.map(item => (
-              <button onClick={handlePage}>
+              <button onClick={()=>handlePage(item.answer)}>
                 {item.option}              
                 {item.answer}
                 </button>  
             ))}
         </div>
+
+           </> 
+        }
         
     </div>
   )

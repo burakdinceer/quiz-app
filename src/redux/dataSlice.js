@@ -1,43 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { questions } from "./questions";
-import {categories,difficulties,type} from "./data";
+import { categories, difficulties, type } from "./data";
 
 const initialState = {
-   questions,
-   categories,
-   difficulties,
-   type,
-   formValue:[],
-   questionsNumber:'',
-   questionsScore:{
-    score:0,
-    maxScore:100
-   },
-   falseQuestion:[],
-}
+  questions,
+  categories,
+  difficulties,
+  type,
+  questionsScore: {
+    score: 0,
+    maxScore: 100,
+  },
+  falseQuestion: [],
+  filterQuestions:[]
+};
 
 export const dataSlice = createSlice({
-    name:'data',
-    initialState,
-    reducers:{
-      formData:(state,action) => {
-        
-        state.formValue=[...state.formValue,action.payload]
-      },
-      formNumber:(state,action) => {
-        state.questionsNumber=action.payload
-      },
-      filterData:(state,action) => {
-        state.questions = action.payload
-      },
-      formScore:(state,action) => {
-        state.questionsScore.score = action.payload
-      },
-      falseForm:(state,action) => {
-        state.falseQuestion = [...state.falseQuestion,action.payload]
-      }
+  name: "data",
+  initialState,
+  reducers: {
+    filterData: (state, action) => {
+      state.filterQuestions = action.payload;
+    },
+    formScore: (state, action) => {
+      state.questionsScore.score = action.payload;
+    },
+    falseForm: (state, action) => {
+      state.falseQuestion = [...state.falseQuestion, action.payload];
+    },
+    resetData: (state,action) => {
+      state.filterQuestions = [] 
     }
-})
+  },
+});
 
-export const {formData,formNumber,filterData,formScore,falseForm} = dataSlice.actions
-export default dataSlice.reducer
+export const { formData, formNumber, filterData, formScore, falseForm , resetData} =
+  dataSlice.actions;
+export default dataSlice.reducer;

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { falseForm, formScore } from "../../redux/dataSlice";
 import Modal from "../../components/Modal/Modal";
 import "./Quiz.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Quiz = () => {
   const {  filterQuestions, questionsScore } = useSelector(
@@ -25,8 +27,9 @@ const Quiz = () => {
     if (nextQuestion < filterQuestions.length) {
       setNumber(nextQuestion);
     } else {
-      alert("Sınav Bitti, Sonuçlar Yükleniyor...");
-      setActive(!active);
+     toast("Sonuçlar Hesaplanıyor...");
+     setTimeout(() => setActive(!active), 3000);
+      
     }
   };
   return (
@@ -35,21 +38,44 @@ const Quiz = () => {
         <Modal />
       ) : (
         <>
-          <div className="quizNumber">
+          <div className="quizText">
            
-            {number + 1} <span>/</span> {filterQuestions.length}
+           <div className="quizNumber"> {number + 1} <span>/</span> {filterQuestions.length}</div>
+           <div className="quizTitle">{filterQuestions[number]?.question}</div>
           </div>
-          <div className="quizTitle">{filterQuestions[number]?.question}</div>
+        
           <div className="quizAnswer">
+          
             {filterQuestions[number].answers.map((item) => (
-              <button onClick={() => handlePage(item.answer)}>
+             <div>
+                 <button onClick={() => handlePage(item.answer)}>
                 {item.option}
                 {item.answer}
+                
               </button>
+
+
+             </div>
+            
             ))}
+
+            
+         
           </div>
+          
         </>
       )}
+       <ToastContainer
+       position="top-center"
+       autoClose={1500}
+       hideProgressBar={false}
+       newestOnTop={false}
+       closeOnClick
+       rtl={false}
+       pauseOnFocusLoss
+       draggable
+       pauseOnHover
+       theme="light" />
     </div>
   );
 };

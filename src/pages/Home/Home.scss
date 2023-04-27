@@ -36,7 +36,7 @@ $fontColorWhite: white;
       }
       button{
         @include formElement;
-        background: rgba(61, 101, 193, 0.886);
+        background: steelblue;
         color: $fontColorWhite;
       }
       .formInput{

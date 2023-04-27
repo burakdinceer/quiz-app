@@ -43,28 +43,28 @@ export const questions = [
      },
      {
         id:4,
-        question:'Hangisi 2nin katıdırrrrrrrrrrrrrrrrrrrr?',
+        question:'8 x 2 kaçtır?',
         answers:[
-         {option:'A)',answer:'9'},
-         {option:'B)',answer:'5'},
-         {option:'C)',answer:'3'},
-         {option:'D)',answer:'4'},
+         {option:'A)',answer:'16'},
+         {option:'B)',answer:'15'},
+         {option:'C)',answer:'24'},
+         {option:'D)',answer:'32'},
           ],
-        correctAnswer:'4',
+        correctAnswer:'16',
         category:'Maths',
         difficulty:'Easy',
         type:'Multiple'
      },
      {
          id:5,
-         question:'Hangisi 2nin katıdır?',
+         question:'15 / 3 kaçtır?',
          answers:[
             {option:'A)',answer:'9'},
             {option:'B)',answer:'5'},
             {option:'C)',answer:'3'},
-            {option:'D)',answer:'4'},
+            {option:'D)',answer:'8'},
           ],
-         correctAnswer:'4',
+         correctAnswer:'3',
          category:'Maths',
          difficulty:'Easy',
          type:'Multiple'
@@ -289,12 +289,12 @@ export const questions = [
      ,
      {
         id:22,
-        question:'İkinin küpü 8 dir',
+        question:'9 x 9 un sonucu 71 dir',
         answers:[
            {answer:'Doğru'},
            {answer:'Yanlış'}
         ],
-        correctAnswer:'Doğru',
+        correctAnswer:'Yanlış',
         category:'Maths',
         difficulty:'Medium',
         type:'TrueFalse'
@@ -302,12 +302,12 @@ export const questions = [
      ,
      {
         id:23,
-        question:'İkinin küpü 8 dir',
+        question:'36 nın karakökü 8 dir',
         answers:[
            {answer:'Doğru'},
            {answer:'Yanlış'}
         ],
-        correctAnswer:'Doğru',
+        correctAnswer:'Yanlış',
         category:'Maths',
         difficulty:'Medium',
         type:'TrueFalse'

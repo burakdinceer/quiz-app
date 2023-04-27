@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Home.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { filterData, formData, formNumber } from "../../redux/dataSlice";
+import { filterData } from "../../redux/dataSlice";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -12,15 +12,12 @@ const Home = () => {
     type,
     difficulties,
     categories,
-    questionsNumber
   } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const {register, handleSubmit} = useForm()
   const navigate =  useNavigate()
 
-  const handleNumber = (e) => {
-    dispatch(formNumber(e.target.value))
-  }
+
 
   const onSubmit = (data) => {
      const getData = questions?.filter(
@@ -40,22 +37,22 @@ const Home = () => {
       <h1>Quiz App</h1>
       <div className="formSelect">
         <form className="formMain" onSubmit={handleSubmit(onSubmit)}>
-          <select {...register("categories")}>
+          <select className="formCategory" {...register("categories")}>
             {categories?.map(item => (
               <option>{item.name}</option>
             ))}
           </select>
-          <select {...register("difficulties")}>
+          <select className="formDifficulty" {...register("difficulties")}>
             {difficulties?.map(item => (
               <option>{item.name}</option>
             ))}
           </select>
-          <select {...register("type")}>
+          <select className="formType" {...register("type")}>
             {type?.map(item => (
               <option>{item.name}</option>
             ))}
           </select>
-          <input {...register("questionNumber")} />
+          <input  placeholder="Enter the number of questions" required='true' max={5} min={1} type='number' className="formInput" {...register("questionNumber")} />
               <button type="submit">Gönder</button>
              
               

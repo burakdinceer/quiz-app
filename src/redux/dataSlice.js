@@ -28,9 +28,11 @@ export const dataSlice = createSlice({
     falseForm: (state, action) => {
       state.falseQuestion = [...state.falseQuestion, action.payload];
     },
-    resetData: (state,action) => {
-      state.filterQuestions = [] 
-    }
+    resetData: (state) => {
+      state.filterQuestions = [];
+      state.questionsScore.score=0;
+      state.falseQuestion=[];
+    },
   },
 });
 
